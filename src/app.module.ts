@@ -5,10 +5,16 @@ import { AuthModule } from './auth/auth.module';
 import { ProductModule } from './product/product.module';
 import { ReviewModule } from './review/review.module';
 import { PageModule } from './page/page.module';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypegooseModule } from 'nestjs-typegoose';
+import { getMongoConfig } from './configs/mongo.config';
 
 @Module({
-	imports: [ConfigModule.forRoot(), AuthModule, ProductModule, ReviewModule, PageModule],
+	imports: [ConfigModule.forRoot(), TypegooseModule.forRootAsync({
+		imports: [ConfigModule],
+		inject: [ConfigService],
+		useFactory: getMongoConfig
+	}) ,AuthModule, ProductModule, ReviewModule, PageModule],
 	controllers: [AppController],
 	providers: [AppService],
 })
