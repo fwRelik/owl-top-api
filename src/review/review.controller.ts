@@ -11,7 +11,6 @@ import {
 	UsePipes,
 	ValidationPipe,
 } from '@nestjs/common';
-import { UserEmail } from '../decorators/user-email.decorator';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 import { CreateReviewDto } from './dto/create-review.dto';
 import { REVIEW_NOT_FOUND } from './review.constants';
@@ -34,11 +33,8 @@ export class ReviewController {
 		if (!deletedDoc) throw new HttpException(REVIEW_NOT_FOUND, HttpStatus.NOT_FOUND);
 	}
 
-	@UseGuards(JwtAuthGuard)
 	@Get('byProduct/:productId')
-	async getByProduct(@Param('productId') productId: string, @UserEmail() email: string) {
-		// Can use @UserEmail decorator if you have the @UseGuards decorator
-		console.log(`User email: ${email}`);
+	async getByProduct(@Param('productId') productId: string) {
 		return this.reviewService.findByProductId(productId);
 	}
 }
