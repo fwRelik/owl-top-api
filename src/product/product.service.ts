@@ -3,7 +3,7 @@ import { ModelType } from '@typegoose/typegoose/lib/types';
 import { InjectModel } from 'nestjs-typegoose';
 import { ReviewModel } from '../review/review.model/review.model';
 import { FindProductDto } from './dto/find-product.dto';
-import { CreateProductDto } from './dto/reate-product.dto';
+import { CreateProductDto } from './dto/create-product.dto';
 import { ProductModel } from './product.model/product.model';
 
 @Injectable()
