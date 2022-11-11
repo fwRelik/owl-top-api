@@ -11,7 +11,7 @@ import {
 	UsePipes,
 	ValidationPipe,
 } from '@nestjs/common';
-import { IdValidationPipe } from '../pipes/ad-validation.pipe';
+import { IdValidationPipe } from '../pipes/id-validation.pipe';
 import { FindProductDto } from './dto/find-product.dto';
 import { CreateProductDto } from './dto/create-product.dto';
 import { PRODUCT_NOT_FOUND_ERROR } from './product.constants';
