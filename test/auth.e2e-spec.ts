@@ -7,7 +7,7 @@ import { AuthDto } from '../src/auth/dto/auth.dto';
 import { USER_NOT_FOUND_ERROR, WRONG_PASSWORD_ERROR } from '../src/auth/auth.constants';
 
 const loginDto: AuthDto = {
-	login: 'a@a.ra',
+	login: 'a@a.ru',
 	password: '123',
 };
 
@@ -43,6 +43,7 @@ describe('AuthController (e2e)', () => {
 				error: 'Unauthorized',
 			});
 	});
+
 	it('/auth/login (POST) -- fail login', async () => {
 		return request(app.getHttpServer())
 			.post('/auth/login/')
