@@ -18,7 +18,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { PRODUCT_NOT_FOUND_ERROR } from './product.constants';
 import { ProductModel } from './product.model/product.model';
 import { ProductService } from './product.service';
-import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 
 @Controller('product')
 export class ProductController {

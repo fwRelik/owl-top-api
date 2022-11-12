@@ -12,12 +12,11 @@ import {
 	UsePipes,
 	ValidationPipe,
 } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
-import { IdValidationPipe } from 'src/pipes/id-validation.pipe';
+import { JwtAuthGuard } from '../auth/guards/jwt.guard';
+import { IdValidationPipe } from '../pipes/id-validation.pipe';
 import { CreatePageDto } from './dto/create-page.dto';
 import { FindPageDto } from './dto/find-page.dto';
 import { NOT_FOUND_PAGE_ERROR } from './page.constants';
-import { PageModel } from './page.model/page.model';
 import { PageService } from './page.service';
 
 @Controller('page')
