@@ -3,13 +3,8 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 import { disconnect } from 'mongoose';
-import { AuthDto } from '../src/auth/dto/auth.dto';
 import { USER_NOT_FOUND_ERROR, WRONG_PASSWORD_ERROR } from '../src/auth/auth.constants';
-
-const loginDto: AuthDto = {
-	login: 'a@a.ru',
-	password: '123',
-};
+import { loginDto } from './config/auth.config';
 
 describe('AuthController (e2e)', () => {
 	let app: INestApplication;

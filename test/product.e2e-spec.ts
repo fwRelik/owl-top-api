@@ -2,14 +2,12 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
-import { Types, disconnect } from 'mongoose';
-import { AuthDto } from '../src/auth/dto/auth.dto';
+import { disconnect, Types } from 'mongoose';
 import { CreateProductDto } from '../src/product/dto/create-product.dto';
 import { FindProductDto } from '../src/product/dto/find-product.dto';
 import { PRODUCT_NOT_FOUND_ERROR } from '../src/product/product.constants';
 import { ID_VALIDATION_ERROR } from '../src/pipes/id-validation.constants';
-
-const productId = new Types.ObjectId().toHexString();
+import { loginDto } from './config/auth.config';
 
 const testDto: CreateProductDto = {
 	image: '1.png',
@@ -35,15 +33,14 @@ const testDto: CreateProductDto = {
 	],
 };
 
-const loginDto: AuthDto = {
-	login: 'a@a.ru',
-	password: '123',
-};
-
 const findDto: FindProductDto = {
 	category: 'тест',
 	limit: 5,
 };
+
+const randomNumberValue = Math.floor(Math.random() * 80);
+const randomStringValue = 'random_value';
+const randomId = new Types.ObjectId().toHexString();
 
 describe('AppController (e2e)', () => {
 	let app: INestApplication;
@@ -77,7 +74,7 @@ describe('AppController (e2e)', () => {
 	it('/product/create (POST) -- authorized-fail', () => {
 		return request(app.getHttpServer())
 			.post('/product/create')
-			.set('Authorization', 'random value')
+			.set('Authorization', randomStringValue)
 			.send(testDto)
 			.expect(401, {
 				statusCode: 401,
@@ -99,7 +96,7 @@ describe('AppController (e2e)', () => {
 	it('/product/:productId (GET) -- authorized-fail', () => {
 		return request(app.getHttpServer())
 			.get('/product/' + createdId)
-			.set('Authorization', 'random value')
+			.set('Authorization', randomStringValue)
 			.expect(401, {
 				statusCode: 401,
 				message: 'Unauthorized',
@@ -108,7 +105,7 @@ describe('AppController (e2e)', () => {
 
 	it('/product/:productId (GET) -- product-not-found-fail', () => {
 		return request(app.getHttpServer())
-			.get('/product/' + 'random value')
+			.get('/product/' + randomId)
 			.set('Authorization', bearer)
 			.expect(404, {
 				statusCode: 404,
@@ -118,22 +115,20 @@ describe('AppController (e2e)', () => {
 	});
 
 	it('/product/:productId (PATCH) -- success', async () => {
-		const randomValue = Math.floor(Math.random() * 80);
-
 		return await request(app.getHttpServer())
 			.patch('/product/' + createdId)
 			.set('Authorization', bearer)
-			.send({ ...testDto, price: randomValue })
+			.send({ ...testDto, price: randomNumberValue })
 			.expect(200)
 			.then(({ body }: request.Response) => {
-				expect(body.price).toEqual(randomValue);
+				expect(body.price).toEqual(randomNumberValue);
 			});
 	});
 
 	it('/product/:productId (PATCH) -- authorized-fail', () => {
 		return request(app.getHttpServer())
 			.patch('/product/' + createdId)
-			.set('Authorization', 'random value')
+			.set('Authorization', randomStringValue)
 			.expect(401, {
 				statusCode: 401,
 				message: 'Unauthorized',
@@ -142,7 +137,7 @@ describe('AppController (e2e)', () => {
 
 	it('/product/:productId (PATCH) -- invalid-id-fail', () => {
 		return request(app.getHttpServer())
-			.patch('/product/' + 'randomValue')
+			.patch('/product/' + randomNumberValue)
 			.set('Authorization', bearer)
 			.expect(400, {
 				statusCode: 400,
@@ -161,7 +156,7 @@ describe('AppController (e2e)', () => {
 	it('/product/:productId (DELETE) -- authorized-fail', () => {
 		return request(app.getHttpServer())
 			.delete('/product/' + createdId)
-			.set('Authorization', 'random value')
+			.set('Authorization', randomStringValue)
 			.expect(401, {
 				statusCode: 401,
 				message: 'Unauthorized',
@@ -170,7 +165,7 @@ describe('AppController (e2e)', () => {
 
 	it('/product/:productId (DELETE) -- invalid-id-fail', () => {
 		return request(app.getHttpServer())
-			.delete('/product/' + 'randomValue')
+			.delete('/product/' + randomNumberValue)
 			.set('Authorization', bearer)
 			.expect(400, {
 				statusCode: 400,
