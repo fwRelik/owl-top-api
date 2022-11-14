@@ -5,7 +5,7 @@ import { AppModule } from '../src/app.module';
 import { Types, disconnect } from 'mongoose';
 import { CreateReviewDto } from '../src/review/dto/create-review.dto';
 import { REVIEW_NOT_FOUND } from '../src/review/review.constants';
-import { AuthDto } from '../src/auth/dto/auth.dto';
+import { loginDto } from './config/auth.config';
 
 const productId = new Types.ObjectId().toHexString();
 
@@ -15,11 +15,6 @@ const testDto: CreateReviewDto = {
 	description: 'Тестовое описание ',
 	rating: 5,
 	productId,
-};
-
-const loginDto: AuthDto = {
-	login: 'a@a.ru',
-	password: '123',
 };
 
 describe('AppController (e2e)', () => {
