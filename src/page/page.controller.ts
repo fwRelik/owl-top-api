@@ -38,7 +38,7 @@ export class PageController {
 	}
 
 	@Get('byAlias/:alias')
-	async getByAlias(@Param('id') alias: string) {
+	async getByAlias(@Param('alias') alias: string) {
 		const page = await this.pageService.findByAlias(alias);
 		if (!page) throw new NotFoundException(NOT_FOUND_PAGE_ERROR);
 		return page;
