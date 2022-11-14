@@ -1,4 +1,4 @@
-import { prop } from '@typegoose/typegoose';
+import { prop, index } from '@typegoose/typegoose';
 import { Base, TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
 
 export enum TopLevelCategory {
@@ -28,6 +28,12 @@ export class PageAdvantage {
 }
 
 export interface PageModel extends Base {}
+
+/**
+ * Такой метод индексации подходит для средних проектов с небольшой нагрузкой
+ */
+// @index({ '$**': 'text' })
+@index({ title: 'text', seoText: 'text' })
 export class PageModel extends TimeStamps {
 	@prop({ enum: TopLevelCategory })
 	firstCategory: TopLevelCategory;
@@ -38,7 +44,7 @@ export class PageModel extends TimeStamps {
 	@prop({ unique: true })
 	alias: string;
 
-	@prop()
+	@prop({ text: true })
 	title: string;
 
 	@prop()
