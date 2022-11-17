@@ -1,0 +1,21 @@
+name: github-actions-test-api
+on: [push]
+
+env:
+    MONGO_LOGIN: ${{ secrets.MONGO_LOGIN }}
+    MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+    MONGO_HOST: ${{ secrets.MONGO_HOST }}
+    JWT_SECRET: ${{ secrets.JWT_SECRET }}
+    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+jobs:
+    top-api:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: '14'
+                  registry-url: 'https://registry.npmjs.org/'
+            - run: npm i
+            - run: npm run test:e2e
