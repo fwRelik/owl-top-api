@@ -21,6 +21,10 @@ export class PageService {
 		return this.pageModel.findOne({ alias }).exec();
 	}
 
+	async findAll() {
+		return this.pageModel.find({}).exec();
+	}
+
 	async findByCategory(firstCategory: TopLevelCategory) {
 		return this.pageModel
 			.aggregate()
@@ -44,3 +48,4 @@ export class PageService {
 		return this.pageModel.findByIdAndUpdate(id, dto, { new: true }).exec();
 	}
 }
+
