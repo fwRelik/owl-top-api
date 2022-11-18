@@ -5,6 +5,7 @@ import { CreatePageDto } from './dto/create-page.dto';
 import { PageModel, TopLevelCategory } from './page.model/page.model';
 import { FindPageDto } from './dto/find-page.dto';
 import { addDays } from 'date-fns';
+import { Types } from 'mongoose';
 
 @Injectable()
 export class PageService {
@@ -45,11 +46,15 @@ export class PageService {
 		return this.pageModel.findByIdAndDelete(id).exec();
 	}
 
-	async updateById(id: string, dto: FindPageDto) {
+	async updateById(id: string | Types.ObjectId, dto: FindPageDto) {
 		return this.pageModel.findByIdAndUpdate(id, dto, { new: true }).exec();
 	}
 
 	async findForHhUpdate(date: Date) {
-		return this.pageModel.find({ firstCategory: 0, 'hh.updatedAt': { $lt: addDays(date, -1) } }).exec();
+		return this.pageModel
+			.find({
+				firstCategory: 0,
+			})
+			.exec();
 	}
 }
