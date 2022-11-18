@@ -13,6 +13,7 @@ import {
 	UsePipes,
 	ValidationPipe,
 } from '@nestjs/common';
+import { Cron } from '@nestjs/schedule';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 import { HhService } from '../hh/hh.service';
 import { IdValidationPipe } from '../pipes/id-validation.pipe';
@@ -74,14 +75,13 @@ export class PageController {
 		return this.pageService.findByText(text);
 	}
 
-	@Post('test')
+	@Cron('0 0 * * * *')
 	async test() {
 		const data = await this.pageService.findForHhUpdate(new Date());
 		Logger.log(data);
 
 		for (let page of data) {
 			const hhData = await this.hhService.getData(page.category);
-			Logger.log(hhData);
 			page.hh = hhData;
 			await this.pageService.updateById(page._id, page);
 		}
