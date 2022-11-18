@@ -24,13 +24,6 @@ export class SitemapController {
 				changefreq: 'daily',
 				priority: '1.0',
 			},
-			{
-				// temporarily
-				loc: `${this.domain}/courses`,
-				lastmod: format(subDays(new Date(), 1), formatString),
-				changefreq: 'daily',
-				priority: '1.0',
-			},
 		];
 
 		const pages = await this.pageService.findAll();
@@ -59,4 +52,3 @@ export class SitemapController {
 		});
 	}
 }
-

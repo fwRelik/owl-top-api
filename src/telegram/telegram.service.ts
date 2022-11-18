@@ -17,4 +17,3 @@ export class TelegramService {
 		await this.bot.telegram.sendMessage(chatId, message);
 	}
 }
-

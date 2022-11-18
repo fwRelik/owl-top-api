@@ -54,7 +54,7 @@ export class PageService {
 		return this.pageModel
 			.find({
 				firstCategory: 0,
-				// $or: [{ 'hh.updatedAt': { $lt: addDays(date, -1) } }, { 'hh.updatedAt': { $exists: false } }],
+				$or: [{ 'hh.updatedAt': { $lt: addDays(date, -1) } }, { 'hh.updatedAt': { $exists: false } }],
 			})
 			.exec();
 	}

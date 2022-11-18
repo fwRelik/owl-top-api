@@ -11,6 +11,7 @@ export class HhService {
 	private token: string;
 
 	constructor(private readonly configService: ConfigService, private readonly httpService: HttpService) {
+		// Нужнен рефаторинг
 		this.token = this.configService.get('HH_TOKEN') ?? '';
 	}
 

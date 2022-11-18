@@ -1,4 +1,4 @@
-name: top-api-e2e
+name: owl-top-api-e2e
 on: [push]
 
 env:
@@ -6,10 +6,13 @@ env:
     MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
     MONGO_HOST: ${{ secrets.MONGO_HOST }}
     JWT_SECRET: ${{ secrets.JWT_SECRET }}
+    DOMAIN: ${{ secrets.DOMAIN }}
+    TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
-    top-api:
+    owl-top-api:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
