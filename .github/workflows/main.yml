@@ -1,4 +1,4 @@
-name: github-actions-test-api
+name: top-api-e2e
 on: [push]
 
 env:
