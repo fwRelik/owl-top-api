@@ -8,4 +8,3 @@ import { SitemapController } from './sitemap.controller';
 	imports: [PageModule, ConfigModule],
 })
 export class SitemapModule {}
-

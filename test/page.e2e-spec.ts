@@ -19,6 +19,7 @@ const testDto: CreatePageDto = {
 		juniorSalary: 120000,
 		middleSalary: 220000,
 		seniorSalary: 350000,
+		updatedAt: new Date(),
 	},
 	advantages: [
 		{

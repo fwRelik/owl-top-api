@@ -2,7 +2,7 @@ import { ArgumentMetadata, BadRequestException, Injectable, PipeTransform } from
 import { Types } from 'mongoose';
 import { ID_VALIDATION_ERROR } from './id-validation.constants';
 
-// check if the passed id is correct
+// Проверка правильности переданного идентификатора
 @Injectable()
 export class IdValidationPipe implements PipeTransform {
 	transform(value: string, metadata: ArgumentMetadata) {
