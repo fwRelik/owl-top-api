@@ -4,6 +4,7 @@ import {
 	Delete,
 	Get,
 	HttpCode,
+	Logger,
 	NotFoundException,
 	Param,
 	Patch,
@@ -13,6 +14,7 @@ import {
 	ValidationPipe,
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
+import { HhService } from '../hh/hh.service';
 import { IdValidationPipe } from '../pipes/id-validation.pipe';
 import { CreatePageDto } from './dto/create-page.dto';
 import { FindPageDto } from './dto/find-page.dto';
@@ -21,7 +23,7 @@ import { PageService } from './page.service';
 
 @Controller('page')
 export class PageController {
-	constructor(private readonly pageService: PageService) {}
+	constructor(private readonly pageService: PageService, private readonly hhService: HhService) {}
 
 	@UseGuards(JwtAuthGuard)
 	@Post('create')
@@ -70,5 +72,18 @@ export class PageController {
 	@Get('textSearch/:text')
 	async textSearch(@Param('text') text: string) {
 		return this.pageService.findByText(text);
+	}
+
+	@Post('test')
+	async test() {
+		const data = await this.pageService.findForHhUpdate(new Date());
+		Logger.log(data);
+
+		for (let page of data) {
+			const hhData = await this.hhService.getData(page.category);
+			Logger.log(hhData);
+			page.hh = hhData;
+			await this.pageService.updateById(page._id, page);
+		}
 	}
 }

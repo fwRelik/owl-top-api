@@ -1,9 +1,11 @@
+import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
-import { PageModule } from '../page/page.module';
+import { ConfigModule } from '@nestjs/config';
 import { HhService } from './hh.service';
 
 @Module({
 	providers: [HhService],
-	exports: [PageModule],
+	imports: [ConfigModule, HttpModule],
+	exports: [HhService],
 })
 export class HhModule {}

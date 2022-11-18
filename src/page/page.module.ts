@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypegooseModule } from 'nestjs-typegoose';
+import { HhModule } from '../hh/hh.module';
 import { PageController } from './page.controller';
 import { PageModel } from './page.model/page.model';
 import { PageService } from './page.service';
@@ -15,6 +16,7 @@ import { PageService } from './page.service';
 				},
 			},
 		]),
+		HhModule,
 	],
 	providers: [PageService],
 	exports: [PageService],
