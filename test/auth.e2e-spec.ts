@@ -19,7 +19,7 @@ describe('AuthController (e2e)', () => {
 	});
 
 	it('/auth/login (POST) -- success', async () => {
-		return request(app.getHttpServer())
+		return await request(app.getHttpServer())
 			.post('/auth/login/')
 			.send(loginDto)
 			.expect(200)
@@ -28,7 +28,7 @@ describe('AuthController (e2e)', () => {
 			});
 	});
 
-	it('/auth/login (POST) -- fail password', async () => {
+	it('/auth/login (POST) -- fail password', () => {
 		return request(app.getHttpServer())
 			.post('/auth/login/')
 			.send({ ...loginDto, password: '777' })
@@ -39,7 +39,7 @@ describe('AuthController (e2e)', () => {
 			});
 	});
 
-	it('/auth/login (POST) -- fail login', async () => {
+	it('/auth/login (POST) -- fail login', () => {
 		return request(app.getHttpServer())
 			.post('/auth/login/')
 			.send({ ...loginDto, login: 'b@b.ru' })
@@ -52,3 +52,4 @@ describe('AuthController (e2e)', () => {
 
 	afterAll(() => disconnect());
 });
+
