@@ -33,7 +33,7 @@ export class PageService {
 			.match({ firstCategory })
 			.group({
 				_id: { secondCategory: '$secondCategory' },
-				page: { $push: { alias: '$alias', title: '$title' } },
+				page: { $push: { alias: '$alias', title: '$title', _id: '$_id', category: '$category' } },
 			})
 			.exec();
 	}
