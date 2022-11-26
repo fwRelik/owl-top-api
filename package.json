@@ -1,7 +1,7 @@
 {
 	"name": "owl-top-api",
-	"version": "0.1.0",
-	"description": "API for the owl project",
+	"version": "0.2.0",
+	"description": "API for the owl-top-app project",
 	"author": "fwRelik",
 	"private": true,
 	"license": "UNLICENSED",

@@ -26,7 +26,9 @@ export class HhData {
 }
 
 export class PageAdvantage {
+	@prop()
 	title: string;
+	@prop()
 	description: string;
 }
 

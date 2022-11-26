@@ -76,7 +76,7 @@ export class PageController {
 	}
 
 	@Cron('0 0 * * * *')
-	async test() {
+	async hhUpdate() {
 		const data = await this.pageService.findForHhUpdate(new Date());
 		for (let page of data) {
 			const hhData = await this.hhService.getData(page.category);
