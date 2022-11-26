@@ -12,10 +12,10 @@ The necessary environment variables that need to be set before starting are loca
 
 Installing all dependencies and start API.
 
-> Since there are temporary dependency conflicts use `--legacy-peer-deps`
+> If using a node higher than version `14.21.1` then use `--legacy-peer-deps`.
 
 ```cmd
-npm i --legacy-peer-deps
+npm i
 ```
 
 ```cmd
