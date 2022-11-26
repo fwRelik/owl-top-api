@@ -27,6 +27,7 @@ npm start
 -   [Auth Requests](#auth-requests)
 -   [Product Requests](#product-requests)
 -   [Page Requests](#page-requests)
+-   [Review Requests](#review-requests)
 -   [Image .jpg to .webp Requests](#image-jpg-to-webp-requests)
 -   [Telegram Requests](#telegram-requests)
 -   [XML Requests](#xml-requests)
@@ -221,6 +222,44 @@ npm start
   "createdAt": "Date",
   "updatedAt": "Date",
   "__v": 0
+}
+```
+
+---
+
+## Review Requests
+
+| Method | Path | Headers | Body | Response (Positive Outcome) |
+| --- | --- | --- | --- | --- |
+| GET | `/api/review/byProduct/:productId` | null | null | [Review Response (Array)](#review-response) |
+| POST | `/api/review/create` | `Content-Type: application/json` | [Review Body](#review-body) | [Review Response](#review-response) |
+| DELETE | `/api/review/:reviewId` | `Authorization: Bearer [JWT]` | null | [Review Response](#review-response) |
+
+### Review Body
+
+```json
+{
+  "name": "string",
+  "title": "string",
+  "description": "string",
+  "rating": "number",
+  "productId": "string"
+}
+```
+
+### Review Response
+
+```json
+{
+  "_id": "string",
+  "name": "string",
+  "title": "string",
+  "description": "string",
+  "rating": "number",
+  "productId": "string",
+  "createdAt": "Date",
+  "updatedAt": "Date",
+  "__v": "number"
 }
 ```
 
