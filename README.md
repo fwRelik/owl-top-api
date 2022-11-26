@@ -151,7 +151,7 @@ npm start
 | GET | `/api/page/:pageId` | `Authorization: Bearer [JWT]` | null | [Page Response](#page-response) |
 | GET | `/api/page/byAlias/[alias]` | null | null | [Page Response](#page-response) |
 | GET | `/api/page/textSearch/[text]` | null | null | [Page Response (Array)](#page-response) |
-| POST | `/api/page/find` | `Content-Type: application/json` | [Page Find Body](#page-find-body) | [Page Response (Array)](#page-response) |
+| POST | `/api/page/find` | `Content-Type: application/json` | [Page Find Body](#page-find-body) | [Page Find Response (Array)](#page-find-response) |
 | POST | `/api/page/create` | `Content-Type: application/json`, `Authorization: Bearer [JWT]` | [Page Body](#page-body) | [Page Response](#page-response) |
 | PATCH | `/api/page/:pageId` | `Content-Type: application/json`, `Authorization: Bearer [JWT]` | [Page Body](#page-body) | [Page Response](#page-response) |
 | DELETE | `/api/page/:pageId` | `Authorization: Bearer [JWT]` | null | [Page Response](#page-response) |
@@ -223,6 +223,26 @@ npm start
   "updatedAt": "Date",
   "__v": 0
 }
+```
+
+### Page Find Response
+
+```json
+[
+  {
+    "_id": {
+      "secondCategory": "string"
+    },
+    "pages": [
+      {
+        "alias": "string",
+        "title": "string",
+        "_id": "string",
+        "category": "string"
+      }
+    ]
+  }
+]
 ```
 
 ---
