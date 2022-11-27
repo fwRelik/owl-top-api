@@ -27,7 +27,7 @@ export class CreateProductDto {
 	credit: number;
 
 	@IsNumber()
-	caclulatedRating: number;
+	calculatedRating: number;
 
 	@IsString()
 	description: string;
