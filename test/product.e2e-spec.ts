@@ -15,7 +15,7 @@ const testDto: CreateProductDto = {
 	price: 100,
 	oldPrice: 120,
 	credit: 10,
-	caclulatedRating: 0,
+	calculatedRating: 0,
 	description: 'Описание продукта',
 	advantages: 'Преимущества продукта',
 	disAdvantages: 'Недостатки продукта',
