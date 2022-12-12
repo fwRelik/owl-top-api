@@ -65,6 +65,12 @@ export class PageModel extends TimeStamps {
 	seoText: string;
 
 	@prop()
+	seoTitle?: string;
+	
+	@prop()
+	seoDescription?: string;
+
+	@prop()
 	tagsTitle: string;
 
 	@prop({ type: () => [String] })
