@@ -56,6 +56,14 @@ export class CreatePageDto {
 	@IsString()
 	seoText: string;
 
+	@IsOptional()
+	@IsString()
+	seoTitle?: string;
+
+	@IsOptional()
+	@IsString()
+	seoDescription?: string;
+
 	@IsString()
 	tagsTitle: string;
 
