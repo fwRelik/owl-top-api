@@ -1,0 +1,20 @@
+name: api-build
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    api-build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+            - name: Publish to Registry
+              uses: elgohr/Publish-Docker-Github-Action@master
+              with:
+                  registry: docker.pkg.github.com
+                  name: docker.pkg.github.com/fwrelik/owl-top-api/owl-top-api
+                  username: ${{ secrets.DOCKER_USERNAME }}
+                  password: ${{ secrets.DOCKER_PASSWORD }}
+                  tags: develop

@@ -1,6 +1,6 @@
 # API request documentation.
 
-![GitHub last commit](https://img.shields.io/github/last-commit/fwRelik/owl-top-api) [![owl-top-api-e2e](https://github.com/fwRelik/owl-top-api/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/fwRelik/owl-top-api/actions/workflows/main.yml)
+![GitHub last commit](https://img.shields.io/github/last-commit/fwRelik/owl-top-api) [![api-e2e](https://github.com/fwRelik/owl-top-api/actions/workflows/tests.yml/badge.svg)](https://github.com/fwRelik/owl-top-api/actions/workflows/tests.yml) [![api-build](https://github.com/fwRelik/owl-top-api/actions/workflows/build.yml/badge.svg)](https://github.com/fwRelik/owl-top-api/actions/workflows/build.yml)
 
 ## About
 
