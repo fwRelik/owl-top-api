@@ -180,6 +180,8 @@ npm start
     }
   ],
   "seoText": "string",
+  "seoTitle": "string",
+  "seoDescription": "string",
   "tagsTitle": "string",
   "tags": ["string"],
   "hh": {
@@ -209,6 +211,8 @@ npm start
     }
   ],
   "seoText": "string",
+  "seoTitle": "string",
+  "seoDescription": "string",
   "tagsTitle": "string",
   "tags": ["string"],
   "hh": {
