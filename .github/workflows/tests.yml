@@ -1,26 +1,26 @@
 name: api-e2e
 
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
 
 env:
-    MONGO_LOGIN: ${{ secrets.MONGO_LOGIN }}
-    MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
-    MONGO_HOST: ${{ secrets.MONGO_HOST }}
-    JWT_SECRET: ${{ secrets.JWT_SECRET }}
-    DOMAIN: ${{ secrets.DOMAIN }}
-    TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-    TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+  MONGO_LOGIN: ${{ secrets.MONGO_LOGIN }}
+  MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+  MONGO_HOST: ${{ secrets.MONGO_HOST }}
+  JWT_SECRET: ${{ secrets.JWT_SECRET }}
+  DOMAIN: ${{ secrets.DOMAIN }}
+  TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
 jobs:
-    e2e-tests:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
-              with:
-                  node-version: '14'
-            - run: npm i
-            - run: npm run test:e2e
+  e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "14"
+      - run: npm i
+      - run: npm run test:e2e

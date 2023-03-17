@@ -1,9 +1,10 @@
 version: '3'
 services:
-    owl-top-api:
-        image: owl-top-api
-        restart: always
-        ports:
-            - 3000:3000
-        env_file:
-            - ./.env
+  api:
+    image: ghcr.io/fwrelik/owl-top-api:main
+    container_name: owl-top-api
+    restart: always
+    ports:
+      - 3000:3000
+    env_file:
+      - ./.env
